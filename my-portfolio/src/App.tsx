@@ -109,85 +109,85 @@ function App() {
             <div className="tech-carousel-container">
               <div className="tech-carousel" onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'} onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}>
                 <div className="tech-item">
-                  <FaReact className="tech-icon" />
+                  {React.createElement(FaReact as any, { className: "tech-icon" })}
                   <span className="tech-name">React</span>
                 </div>
                 <div className="tech-item">
-                  <SiTypescript className="tech-icon" />
+                  {React.createElement(SiTypescript as any, { className: "tech-icon" })}
                   <span className="tech-name">TypeScript</span>
                 </div>
                 <div className="tech-item">
-                  <SiJavascript className="tech-icon" />
+                  {React.createElement(SiJavascript as any, { className: "tech-icon" })}
                   <span className="tech-name">JavaScript</span>
                 </div>
                 <div className="tech-item">
-                  <FaPython className="tech-icon" />
+                  {React.createElement(FaPython as any, { className: "tech-icon" })}
                   <span className="tech-name">Python</span>
                 </div>
                 <div className="tech-item">
-                  <FaJava className="tech-icon" />
+                  {React.createElement(FaJava as any, { className: "tech-icon" })}
                   <span className="tech-name">Java</span>
                 </div>
                 <div className="tech-item">
-                  <FaNode className="tech-icon" />
+                  {React.createElement(FaNode as any, { className: "tech-icon" })}
                   <span className="tech-name">Node.js</span>
                 </div>
                 <div className="tech-item">
-                  <FaAws className="tech-icon" />
+                  {React.createElement(FaAws as any, { className: "tech-icon" })}
                   <span className="tech-name">AWS</span>
                 </div>
                 <div className="tech-item">
-                  <FaDocker className="tech-icon" />
+                  {React.createElement(FaDocker as any, { className: "tech-icon" })}
                   <span className="tech-name">Docker</span>
                 </div>
                 <div className="tech-item">
-                  <SiKubernetes className="tech-icon" />
+                  {React.createElement(SiKubernetes as any, { className: "tech-icon" })}
                   <span className="tech-name">Kubernetes</span>
                 </div>
                 <div className="tech-item">
-                  <SiPostgresql className="tech-icon" />
+                  {React.createElement(SiPostgresql as any, { className: "tech-icon" })}
                   <span className="tech-name">PostgreSQL</span>
                 </div>
                 <div className="tech-item">
-                  <SiMongodb className="tech-icon" />
+                  {React.createElement(SiMongodb as any, { className: "tech-icon" })}
                   <span className="tech-name">MongoDB</span>
                 </div>
                 <div className="tech-item">
-                  <FaLock className="tech-icon" />
+                  {React.createElement(FaLock as any, { className: "tech-icon" })}
                   <span className="tech-name">Security</span>
                 </div>
                 
                 {/* Duplicate for seamless loop */}
                 <div className="tech-item">
-                  <FaReact className="tech-icon" />
+                  {React.createElement(FaReact as any, { className: "tech-icon" })}
                   <span className="tech-name">React</span>
                 </div>
                 <div className="tech-item">
-                  <SiTypescript className="tech-icon" />
+                  {React.createElement(SiTypescript as any, { className: "tech-icon" })}
                   <span className="tech-name">TypeScript</span>
                 </div>
                 <div className="tech-item">
-                  <SiJavascript className="tech-icon" />
+                  {React.createElement(SiJavascript as any, { className: "tech-icon" })}
                   <span className="tech-name">JavaScript</span>
                 </div>
                 <div className="tech-item">
-                  <FaPython className="tech-icon" />
+                  {React.createElement(FaPython as any, { className: "tech-icon" })}
                   <span className="tech-name">Python</span>
                 </div>
                 <div className="tech-item">
-                  <FaJava className="tech-icon" />
+                  {React.createElement(FaJava as any, { className: "tech-icon" })}
                   <span className="tech-name">Java</span>
                 </div>
                 <div className="tech-item">
-                  <FaNode className="tech-icon" />
+                  {React.createElement(FaNode as any, { className: "tech-icon" })}
                   <span className="tech-name">Node.js</span>
                 </div>
                 <div className="tech-item">
-                  <FaAws className="tech-icon" />
+                  {React.createElement(FaAws as any, { className: "tech-icon" })}
                   <span className="tech-name">AWS</span>
                 </div>
                 <div className="tech-item">
-                  <FaDocker className="tech-icon" />
+                  {React.createElement(FaDocker as any, { className: "tech-icon" })}
                   <span className="tech-name">Docker</span>
                 </div>
               </div>
