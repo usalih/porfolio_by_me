@@ -38,7 +38,9 @@ function App() {
       <div className={"app-root" + (lightMode ? ' light-mode' : '')}>
         <nav className={"side-nav" + (navOpen ? ' open' : '')}>
           <div className="nav-header">
-            <img src="/images/logo.png" alt="Usman Logo" className="logo-image" />
+            <a href="#home">
+              <img src="/images/logo.png" alt="Usman Logo" className="logo-image" />
+            </a>
             <h3>Usman</h3>
             <button className="nav-toggle" onClick={() => setLightMode(m => !m)} aria-label="Toggle light/dark mode">
               {lightMode ?  '🌙':'☀️'}
@@ -84,6 +86,14 @@ function App() {
               <div className="hero-text">
                 <h1>Building Scalable Systems at the Intersection of Software, Cloud, and Security = My Job.</h1>
                 <p>Driven by a growth mindset, I focus on problem-solving and systems thinking to deliver enterprise-grade solutions with global relevance and African grounding.</p>
+                <div className="hero-cta">
+                  <a href="%PUBLIC_URL%/Resume.pdf" download className="cta-btn cta-primary">
+                    📥 Download Resume
+                  </a>
+                  <a href="mailto:ussalih@yahoo.com" className="cta-btn cta-secondary">
+                    ✉️ Contact Me
+                  </a>
+                </div>
               </div>
             </div>
           </section>
