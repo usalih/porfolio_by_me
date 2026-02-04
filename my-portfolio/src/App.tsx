@@ -41,7 +41,7 @@ function App() {
             <img src="/images/logo.png" alt="Usman Logo" className="logo-image" />
             <h3>Usman</h3>
             <button className="nav-toggle" onClick={() => setLightMode(m => !m)} aria-label="Toggle light/dark mode">
-              {lightMode ? '☀️' : '🌙'}
+              {lightMode ?  '🌙':'☀️'}
             </button>
           </div>
           <ul className="nav-links">
@@ -54,16 +54,16 @@ function App() {
             <li><a href="#contact" onClick={handleLinkClick} className={activeSection === 'contact' ? 'active' : ''}>Contact</a></li>
           </ul>
           <div className="nav-social">
-            <a href="https://linkedin.com/in/usmansaliu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/devpappy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               in
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <a href="https://x.com/pappyloop_" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               𝕏
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a href="https://github.com/usalih" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               ⚙
             </a>
-            <a href="mailto:usman@example.com" aria-label="Email">
+            <a href="mailto:ussalih@outlook.com" aria-label="Email">
               ✉
             </a>
           </div>
@@ -223,8 +223,8 @@ function App() {
                 <label>Select Category: </label>
                 <select value={selectedExperience} onChange={(e) => setSelectedExperience(e.target.value)}>
                   <option value="fullstack">Full Stack Development</option>
-                  <option value="cloud">Cloud & Infrastructure</option>
-                  <option value="security">Security & DevOps</option>
+                  <option value="cloud">Cloud & Devops</option>
+                  <option value="security">Securit</option>
                   <option value="backend">Backend Systems</option>
                   <option value="deployment">Infrastructure Deployment</option>
                 </select>
@@ -236,7 +236,7 @@ function App() {
                     <div className="experience-tile">
                       <div className="tile-year">2023-Present</div>
                       <div className="tile-content">
-                        <h4>IT Infrastructure & Support Engineer</h4>
+                        <h4>IT Infrastructure & System Engineer</h4>
                         <p className="company-name">SIDMACH TECHNOLOGY</p>
                         <p className="date-range">Onsite • February 2023 – Present</p>
                         <p>Managing enterprise IT infrastructure, system administration, and providing technical support. Overseeing cloud deployments and optimizing network infrastructure.</p>
@@ -252,7 +252,7 @@ function App() {
                       </div>
                     </div>
                     <div className="experience-tile">
-                      <div className="tile-year">2020-2021</div>
+                      <div className="tile-year">2020</div>
                       <div className="tile-content">
                         <h4>Website Administrator</h4>
                         <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
@@ -266,7 +266,7 @@ function App() {
                 {selectedExperience === 'cloud' && (
                   <>
                     <div className="experience-tile">
-                      <div className="tile-year">2023-Present</div>
+                      <div className="tile-year"> 2023-Present </div>
                       <div className="tile-content">
                         <h4>Infrastructure Excellence</h4>
                         <p className="company-name">SIDMACH TECHNOLOGY</p>
@@ -284,7 +284,7 @@ function App() {
                       </div>
                     </div>
                     <div className="experience-tile">
-                      <div className="tile-year">2020-2021</div>
+                      <div className="tile-year">2021</div>
                       <div className="tile-content">
                         <h4>Web Infrastructure</h4>
                         <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
@@ -316,7 +316,7 @@ function App() {
                       </div>
                     </div>
                     <div className="experience-tile">
-                      <div className="tile-year">2020-2021</div>
+                      <div className="tile-year">2021</div>
                       <div className="tile-content">
                         <h4>Web Security Fundamentals</h4>
                         <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
@@ -348,7 +348,7 @@ function App() {
                       </div>
                     </div>
                     <div className="experience-tile">
-                      <div className="tile-year">2020-2021</div>
+                      <div className="tile-year">2020</div>
                       <div className="tile-content">
                         <h4>Backend Fundamentals</h4>
                         <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
@@ -371,7 +371,7 @@ function App() {
                       </div>
                     </div>
                     <div className="experience-tile">
-                      <div className="tile-year">2021-2022</div>
+                      <div className="tile-year">2022</div>
                       <div className="tile-content">
                         <h4>Starlink & Access Point Deployment</h4>
                         <p className="company-name">MULTI-SITE DEPLOYMENT</p>
