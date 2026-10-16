@@ -3,11 +3,107 @@ import React, { useEffect, useState } from 'react';
 import { FaReact, FaNode, FaAws, FaDocker, FaJava, FaPython, FaLock } from 'react-icons/fa';
 import { SiTypescript, SiJavascript, SiPostgresql, SiMongodb, SiKubernetes } from 'react-icons/si';
 
+const projectStacks = {
+  website: {
+    label: 'Website',
+    link: '/portfolio-stacks/website/index.html',
+    projects: [
+      {
+        title: 'BrandCart Commerce',
+        category: 'E-commerce',
+        year: '2024',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+        description: 'Built a conversion-focused storefront with product discovery, cart logic, and mobile-first checkout flows designed to reduce friction and increase sales.',
+        stack: ['React', 'UI/UX', 'Conversion']
+      },
+      {
+        title: 'OpsBoard Dashboard',
+        category: 'SaaS',
+        year: '2023',
+        image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
+        description: 'Designed and shipped a SaaS operations dashboard to centralize KPIs, streamline reporting, and give internal users a single decision-making hub.',
+        stack: ['Product Design', 'Dashboard', 'UX']
+      },
+      {
+        title: 'Creator Studio',
+        category: 'Portfolio',
+        year: '2022',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+        description: 'Created a premium portfolio experience that elevated brand trust, improved content presentation, and drove a more polished digital presence.',
+        stack: ['Branding', 'Portfolio', 'Web']
+      }
+    ]
+  },
+  infrastructure: {
+    label: 'Infrastructure',
+    link: '/portfolio-stacks/infrastructure/index.html',
+    projects: [
+      {
+        title: 'Multi-Region Deployment',
+        category: 'Cloud',
+        year: '2024',
+        image: 'https://images.unsplash.com/photo-1558494949cc5c2b7e318b92e7f5e8d9a?auto=format&fit=crop&w=1200&q=80',
+        description: 'Automated multi-region deployments with blue/green release controls, rollback safety nets, and monitoring safeguards for production resilience.',
+        stack: ['AWS', 'Kubernetes', 'CI/CD']
+      },
+      {
+        title: 'CI/CD Automation',
+        category: 'DevOps',
+        year: '2023',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+        description: 'Built a repeatable delivery pipeline with build validation, artifact management, and release automation that reduced manual deployment work.',
+        stack: ['GitHub Actions', 'Containers', 'Automation']
+      },
+      {
+        title: 'System Reliability Stack',
+        category: 'Monitoring',
+        year: '2022',
+        image: 'https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?auto=format&fit=crop&w=1200&q=80',
+        description: 'Designed a reliability stack with centralized alerts, health visibility, and operational dashboards that improved incident response time.',
+        stack: ['Monitoring', 'Alerting', 'Ops']
+      }
+    ]
+  },
+  'cloud-security': {
+    label: 'Cloud Security',
+    link: '/portfolio-stacks/cloud-security/index.html',
+    projects: [
+      {
+        title: 'Zero Trust Access Model',
+        category: 'IAM',
+        year: '2024',
+        image: 'https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=80',
+        description: 'Strengthened cloud access controls with least-privilege policies, identity verification, and audit-friendly enforcement for better internal security posture.',
+        stack: ['IAM', 'Zero Trust', 'Security']
+      },
+      {
+        title: 'Cloud Security Hardening',
+        category: 'Compliance',
+        year: '2023',
+        image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+        description: 'Hardened cloud environments by enforcing policy baselines, reducing risky permissions, and monitoring abnormal access activity across workloads.',
+        stack: ['Hardening', 'Policies', 'Audits']
+      },
+      {
+        title: 'Threat Detection Workflow',
+        category: 'Threat Monitoring',
+        year: '2022',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80',
+        description: 'Built a security monitoring workflow covering suspicious activity, privilege escalation patterns, and faster response playbooks for cloud operations.',
+        stack: ['Detection', 'Logging', 'Response']
+      }
+    ]
+  }
+} as const;
+
+type StackKey = keyof typeof projectStacks;
+
 function App() {
   const [lightMode, setLightMode] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [selectedExperience, setSelectedExperience] = useState('fullstack');
+  const [selectedExperience, setSelectedExperience] = useState<StackKey>('website');
+  const [projectIndex, setProjectIndex] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -32,6 +128,21 @@ function App() {
       const target = document.getElementById(href);
       if (target) target.scrollIntoView({ behavior: 'smooth' });
       setNavOpen(false);
+    };
+
+    useEffect(() => {
+      setProjectIndex(0);
+    }, [selectedExperience]);
+
+    const selectedStack = projectStacks[selectedExperience];
+    const activeProject = selectedStack.projects[projectIndex];
+
+    const goToPreviousProject = () => {
+      setProjectIndex((prevIndex) => (prevIndex === 0 ? selectedStack.projects.length - 1 : prevIndex - 1));
+    };
+
+    const goToNextProject = () => {
+      setProjectIndex((prevIndex) => (prevIndex === selectedStack.projects.length - 1 ? 0 : prevIndex + 1));
     };
 
     return (
@@ -63,7 +174,7 @@ function App() {
               𝕏
             </a>
             <a href="https://github.com/usalih" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              ⚙
+              G
             </a>
             <a href="mailto:ussalih@outlook.com" aria-label="Email">
               ✉
@@ -84,6 +195,10 @@ function App() {
                 </div>
               </div>
               <div className="hero-text">
+                <p className="hero-kicker">
+                  <span className="script-text">hi, I’m</span>
+                  <span className="name-script"> Usman</span>
+                </p>
                 <h1>Building Scalable Systems at the Intersection of Software, Cloud, and Security = My Job.</h1>
                 <p>Driven by a growth mindset, I focus on problem-solving and systems thinking to deliver enterprise-grade solutions with global relevance and African grounding.</p>
                 <div className="hero-cta">
@@ -227,188 +342,55 @@ function App() {
           <section id="experience">
             <h2>Experience</h2>
             <p>My professional path includes hands-on work with enterprise solutions, where I've driven solution-oriented projects that enhance scalability and security. Highlights include optimizing cloud deployments and collaborating on cross-functional teams to deliver impactful results.</p>
-            
+
             <div className="experience-container">
-              <div className="experience-dropdown">
-                <label>Select Category: </label>
-                <select value={selectedExperience} onChange={(e) => setSelectedExperience(e.target.value)}>
-                  <option value="fullstack">Full Stack Development</option>
-                  <option value="cloud">Cloud & Devops</option>
-                  <option value="security">Securit</option>
-                  <option value="backend">Backend Systems</option>
-                  <option value="deployment">Infrastructure Deployment</option>
-                </select>
+              <div className="experience-header">
+                <div className="experience-dropdown">
+                  <label>Select Category: </label>
+                  <select value={selectedExperience} onChange={(e) => setSelectedExperience(e.target.value as StackKey)}>
+                    <option value="website">Website</option>
+                    <option value="infrastructure">Infrastructure</option>
+                    <option value="cloud-security">Cloud Security</option>
+                  </select>
+                </div>
+
+                <a className="view-more-link" href={selectedStack.link} target="_blank" rel="noreferrer">
+                  View more projects <span>→</span>
+                </a>
               </div>
 
-              <div className="experience-timeline">
-                {selectedExperience === 'fullstack' && (
-                  <>
-                    <div className="experience-tile">
-                      <div className="tile-year">2023-Present</div>
-                      <div className="tile-content">
-                        <h4>IT Infrastructure & System Engineer</h4>
-                        <p className="company-name">SIDMACH TECHNOLOGY</p>
-                        <p className="date-range">Onsite • February 2023 – Present</p>
-                        <p>Managing enterprise IT infrastructure, system administration, and providing technical support. Overseeing cloud deployments and optimizing network infrastructure.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2022</div>
-                      <div className="tile-content">
-                        <h4>Software Engineer</h4>
-                        <p className="company-name">SMARTBUKITES</p>
-                        <p className="date-range">Remote • February 2022 – December 2022</p>
-                        <p>Developed full-stack web applications using React and Node.js. Implemented responsive interfaces and backend APIs for scalable solutions.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2020</div>
-                      <div className="tile-content">
-                        <h4>Website Administrator</h4>
-                        <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
-                        <p className="date-range">Remote • January 2020 – June 2021</p>
-                        <p>Maintained and updated website infrastructure. Managed content management systems and ensured optimal site performance and security.</p>
-                      </div>
-                    </div>
-                  </>
-                )}
+              <div className="project-preview">
+                <button className="carousel-btn prev" type="button" onClick={goToPreviousProject} aria-label="Previous project">
+                  ←
+                </button>
 
-                {selectedExperience === 'cloud' && (
-                  <>
-                    <div className="experience-tile">
-                      <div className="tile-year"> 2023-Present </div>
-                      <div className="tile-content">
-                        <h4>Infrastructure Excellence</h4>
-                        <p className="company-name">SIDMACH TECHNOLOGY</p>
-                        <p className="date-range">Onsite • February 2023 – Present</p>
-                        <p>Architecting cloud infrastructure on AWS. Implemented Kubernetes orchestration and containerization strategies for enterprise applications.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2022</div>
-                      <div className="tile-content">
-                        <h4>Cloud & DevOps Implementation</h4>
-                        <p className="company-name">SMARTBUKITES</p>
-                        <p className="date-range">Remote • February 2022 – December 2022</p>
-                        <p>Deployed applications on AWS. Implemented CI/CD pipelines and container management for rapid deployment cycles.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2021</div>
-                      <div className="tile-content">
-                        <h4>Web Infrastructure</h4>
-                        <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
-                        <p className="date-range">Remote • January 2020 – June 2021</p>
-                        <p>Managed web server infrastructure and hosting environments. Optimized performance and managed deployments.</p>
-                      </div>
-                    </div>
-                  </>
-                )}
+                <div className="project-preview-card">
+                  <div
+                    className="project-preview-image"
+                    style={{ backgroundImage: `url(${activeProject.image})` }}
+                    aria-label={activeProject.title}
+                  />
 
-                {selectedExperience === 'security' && (
-                  <>
-                    <div className="experience-tile">
-                      <div className="tile-year">2023-Present</div>
-                      <div className="tile-content">
-                        <h4>Enterprise Security & Compliance</h4>
-                        <p className="company-name">SIDMACH TECHNOLOGY</p>
-                        <p className="date-range">Onsite • February 2023 – Present</p>
-                        <p>Led security initiatives for enterprise infrastructure. Implemented zero-trust architecture and advanced threat detection systems.</p>
-                      </div>
+                  <div className="project-preview-body">
+                    <div className="preview-topline">
+                      <span className="preview-tag">{activeProject.category}</span>
+                      <span className="preview-year">{activeProject.year}</span>
                     </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2022</div>
-                      <div className="tile-content">
-                        <h4>Application Security</h4>
-                        <p className="company-name">SMARTBUKITES</p>
-                        <p className="date-range">Remote • February 2022 – December 2022</p>
-                        <p>Implemented secure coding practices and authentication systems. Integrated security into development pipelines.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2021</div>
-                      <div className="tile-content">
-                        <h4>Web Security Fundamentals</h4>
-                        <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
-                        <p className="date-range">Remote • January 2020 – June 2021</p>
-                        <p>Implemented SSL certificates and security protocols. Protected web applications from common vulnerabilities.</p>
-                      </div>
-                    </div>
-                  </>
-                )}
 
-                {selectedExperience === 'backend' && (
-                  <>
-                    <div className="experience-tile">
-                      <div className="tile-year">2023-Present</div>
-                      <div className="tile-content">
-                        <h4>Advanced System Architecture</h4>
-                        <p className="company-name">SIDMACH TECHNOLOGY</p>
-                        <p className="date-range">Onsite • February 2023 – Present</p>
-                        <p>Architected scalable backend systems handling enterprise workloads. Optimized databases and implemented advanced caching strategies.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2022</div>
-                      <div className="tile-content">
-                        <h4>API Development & Microservices</h4>
-                        <p className="company-name">SMARTBUKITES</p>
-                        <p className="date-range">Remote • February 2022 – December 2022</p>
-                        <p>Built RESTful APIs and microservices using Node.js. Designed database schemas for PostgreSQL and MongoDB applications.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2020</div>
-                      <div className="tile-content">
-                        <h4>Backend Fundamentals</h4>
-                        <p className="company-name">DINAMICA TECHNOLOGY LIMITED</p>
-                        <p className="date-range">Remote • January 2020 – June 2021</p>
-                        <p>Developed backend systems for website functionality. Learned server-side technologies and database management.</p>
-                      </div>
-                    </div>
-                  </>
-                )}
+                    <h3>{activeProject.title}</h3>
+                    <p>{activeProject.description}</p>
 
-                {selectedExperience === 'deployment' && (
-                  <>
-                    <div className="experience-tile">
-                      <div className="tile-year">2020-2023</div>
-                      <div className="tile-content">
-                        <h4>Hardware & Software Deployment</h4>
-                        <p className="company-name">ENTERPRISE SOLUTIONS</p>
-                        <p className="date-range">Ongoing • 2020 – 2023</p>
-                        <p>Executed numerous hardware and software deployment projects across enterprise environments. Managed imaging, configuration management, and system provisioning for organizational infrastructure scaling.</p>
-                      </div>
+                    <div className="preview-stack">
+                      {activeProject.stack.map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
                     </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2022</div>
-                      <div className="tile-content">
-                        <h4>Starlink & Access Point Deployment</h4>
-                        <p className="company-name">MULTI-SITE DEPLOYMENT</p>
-                        <p className="date-range">Onsite • 2021 – 2022</p>
-                        <p>Installed Starlink satellite internet and wireless access points across WAEC sites and multiple organizations. Configured network connectivity for seamless internet access and managed point-to-point links.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2021</div>
-                      <div className="tile-content">
-                        <h4>Sophos Firewall Installation & Configuration</h4>
-                        <p className="company-name">ENTERPRISE SECURITY DEPLOYMENT</p>
-                        <p className="date-range">Onsite • 2021</p>
-                        <p>Deployed and configured Sophos firewall solutions across multiple sites including NYSC facilities. Implemented advanced threat protection and network segmentation for enhanced security posture.</p>
-                      </div>
-                    </div>
-                    <div className="experience-tile">
-                      <div className="tile-year">2020</div>
-                      <div className="tile-content">
-                        <h4>NYSC ITC Building & Network Restructuring</h4>
-                        <p className="company-name">NYSC INFRASTRUCTURE PROJECT</p>
-                        <p className="date-range">Onsite • 2020</p>
-                        <p>Led comprehensive restructuring of NYSC ITC building network infrastructure. Upgraded cabling, implemented modern networking standards, and optimized system architecture for institutional needs.</p>
-                      </div>
-                    </div>
-                  </>
-                )}
+                  </div>
+                </div>
+
+                <button className="carousel-btn next" type="button" onClick={goToNextProject} aria-label="Next project">
+                  →
+                </button>
               </div>
             </div>
           </section>
@@ -432,10 +414,53 @@ function App() {
             <p>Sharing thoughts on tech evolution, career growth, and systems design. Check out my latest articles on cloud strategies and cybersecurity trends.</p>
           </section>
 
-          <section id="contact">
-            <h2>Contact</h2>
-            <p>Let's connect for opportunities in software and cloud engineering.</p>
-            <a href="https://linkedin.com/in/usmansaliu">LinkedIn</a> | <a href="mailto:usman@example.com">Email</a>
+          <section id="contact" className="contact-section">
+            <div className="contact-shell">
+              <div className="contact-copy">
+                <p className="contact-kicker">GOOD THINGS START WITH A HELLO</p>
+                <h2>Have something in mind? Let&apos;s make it happen.</h2>
+
+                <a href="mailto:ussalih@outlook.com" className="contact-email">
+                  ussalih@outlook.com <span aria-hidden="true">↗</span>
+                </a>
+
+                <div className="contact-socials">
+                  <a href="https://linkedin.com/in/devpappy" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a href="https://github.com/usalih" target="_blank" rel="noreferrer">GitHub</a>
+                  <a href="https://x.com/pappyloop_" target="_blank" rel="noreferrer">X</a>
+                </div>
+
+                <div className="contact-signature">Let&apos;s connect.</div>
+              </div>
+
+              <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+                <div className="field-row double">
+                  <label>
+                    <span>Your name</span>
+                    <input type="text" placeholder="Usman Usman" aria-label="Your name" />
+                  </label>
+
+                  <label>
+                    <span>Email address</span>
+                    <input type="email" placeholder="info@usmansaliu.com" aria-label="Email address" />
+                  </label>
+                </div>
+
+                <label>
+                  <span>Subject (optional)</span>
+                  <input type="text" placeholder="Subject" aria-label="Subject (optional)" />
+                </label>
+
+                <label>
+                  <span>What are you thinking?</span>
+                  <textarea rows={5} placeholder="Write your message here..." aria-label="What are you thinking?" />
+                </label>
+
+                <button type="submit" className="send-btn">
+                  Boom <span aria-hidden="true">↗</span>
+                </button>
+              </form>
+            </div>
           </section>
         </main>
       </div>
