@@ -3,7 +3,7 @@
 .app-root {
   font-family: 'Inter', 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: #f3f4f6;
-  background: #0f172a;
+  background: #071c17;
   min-height: 100vh;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
@@ -20,9 +20,9 @@
   top: 0;
   width: 250px;
   height: 100vh;
-  background: #111827;
+  background: #0d1f1a;
   padding: 0;
-  box-shadow: 4px 0 16px rgba(0,0,0,0.35);
+  box-shadow: 4px 0 16px rgba(19, 85, 68, 0.35);
   z-index: 100;
   transition: transform 0.25s ease;
   display: flex;
@@ -921,13 +921,14 @@ section {
 .experience-dropdown select {
   padding: 0.65rem 1rem;
   border-radius: 12px;
-  border: 2px solid rgba(126, 201, 167, 0.3);
-  background: rgba(126, 201, 167, 0.1);
-  color: #e0e0e0;
+  border: 2px solid rgba(126, 201, 167, 0.38);
+  background: linear-gradient(135deg, rgba(14, 45, 35, 0.9), rgba(10, 28, 22, 0.92));
+  color: #ebfff2;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.95rem;
+  box-shadow: inset 0 0 0 1px rgba(126, 201, 167, 0.08);
 }
 
 .experience-dropdown select:hover {
@@ -960,13 +961,13 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #f8fafc;
+  color: #ecfff3;
   text-decoration: none;
   font-weight: 700;
   padding: 0.7rem 1rem;
   border-radius: 999px;
-  background: rgba(126, 201, 167, 0.08);
-  border: 1px solid rgba(126, 201, 167, 0.3);
+  background: linear-gradient(135deg, rgba(126, 201, 167, 0.16), rgba(61, 146, 107, 0.18));
+  border: 1px solid rgba(126, 201, 167, 0.4);
   transition: all 0.3s ease;
 }
 
@@ -987,10 +988,11 @@ section {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 1rem;
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(126, 201, 167, 0.2);
+  background: linear-gradient(135deg, rgba(8, 26, 20, 0.96), rgba(12, 38, 29, 0.9));
+  border: 1px solid rgba(126, 201, 167, 0.28);
   border-radius: 20px;
   padding: 1rem;
+  box-shadow: 0 18px 32px rgba(8, 34, 26, 0.25);
 }
 
 .app-root.light-mode .project-preview {
@@ -1003,12 +1005,12 @@ section {
   height: 46px;
   border: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7ec9a7, #66b693);
-  color: #04131d;
+  background: linear-gradient(135deg, #8ad7ad, #58a57d);
+  color: #082116;
   font-size: 1.5rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 10px 18px rgba(126, 201, 167, 0.22);
+  box-shadow: 0 10px 18px rgba(126, 201, 167, 0.25);
   transition: transform 0.3s ease;
 }
 
